@@ -20,3 +20,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token['fullname'] = user.fullname
         return token
+
+    def validate(self, attrs):
+        # Валидация данных пользователя (username и password)
+        data = super().validate(attrs)
+        return data
